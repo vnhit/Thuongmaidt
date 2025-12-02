@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" 
+            prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: white;"
+            fx:controller="com.ecommerce.controller.EditProfileController">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #f0f0f0; -fx-padding: 10;">
+            <ImageView fx:id="btnBack" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#handleBack" style="-fx-cursor: hand;">
+                <Image url="/images/back_arrow.png" />
+            </ImageView>
+            <Label text="CHỈNH SỬA HỒ SƠ" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+        </HBox>
+    </top>
+    
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="15.0">
+            <padding>
+                <Insets top="30.0" left="20.0" right="20.0" />
+            </padding>
+            
+            <VBox spacing="5.0">
+                <Label text="Tên đăng nhập" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtUsername" promptText="Nhập tên đăng nhập" prefWidth="300.0" disable="true" />
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Email" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtEmail" promptText="Nhập địa chỉ email (ví dụ: a@gmail.com)" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Giới tính" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtGender" promptText="Nhập giới tính (Nam/Nữ)" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Số điện thoại" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtPhone" promptText="Nhập số điện thoại liên hệ" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Địa chỉ" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtAddress" promptText="Nhập địa chỉ nhà (Số nhà, đường...)" prefWidth="300.0" />
+            </VBox>
+
+            <VBox spacing="5.0">
+                <Label text="Thành phố" style="-fx-font-weight: bold;"/>
+                <TextField fx:id="txtCity" promptText="Nhập tên thành phố" prefWidth="300.0" />
+            </VBox>
+            
+            <Button text="LƯU THAY ĐỔI" onAction="#handleSaveProfile" 
+                    style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-font-weight: bold;" prefWidth="300.0">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </Button>
+            
+            <Label fx:id="lblMessage" textFill="GREEN" />
+        </VBox>
+    </center>
+    
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="60.0" style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, -5);">
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS" onMouseClicked="#handleNavHomeClick" style="-fx-cursor: hand;">
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="/images/home.png" />
+                </ImageView>
+                <Label text="TRANG CHỦ" />
+            </VBox>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS" onMouseClicked="#handleNavCategoryClick" style="-fx-cursor: hand;">
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="/images/category.png" />
+                </ImageView>
+                <Label text="DANH MỤC" />
+            </VBox>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS" onMouseClicked="#handleNavFavoriteClick" style="-fx-cursor: hand;">
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="/images/heart.png" />
+                </ImageView>
+                <Label text="YÊU THÍCH" />
+            </VBox>
+            <VBox alignment="CENTER" HBox.hgrow="ALWAYS" onMouseClicked="#handleNavPersonalClick" style="-fx-cursor: hand;">
+                <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="/images/user.png" />
+                </ImageView>
+                <Label text="CÁ NHÂN" />
+            </VBox>
+        </HBox>
+    </bottom>
+</BorderPane>

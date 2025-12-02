@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.CheckoutController">
+    
+    <fx:define>
+        <ToggleGroup fx:id="paymentGroup" />
+    </fx:define>
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" spacing="10.0" style="-fx-background-color: white; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 0, 2, 0, 0);">
+            <ImageView fx:id="btnBack" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#handleBackToHome" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                <Image url="@../../../images/back_arrow.png" />
+            </ImageView>
+            <Label text="THANH TOÁN" textFill="#2c3e50">
+                <font><Font name="System Bold" size="18.0" /></font>
+            </Label>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;">
+            <VBox spacing="15.0" style="-fx-padding: 15;">
+                
+                <VBox spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+                    <HBox alignment="CENTER_LEFT" spacing="5.0">
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../../../images/location.png" /> 
+                        </ImageView>
+                        <Label text="Địa chỉ nhận hàng" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                    </HBox>
+                    <Separator />
+                    <Label fx:id="lblName" text="Tên người nhận" style="-fx-font-weight: bold;" />
+                    <Label fx:id="lblPhone" text="Số điện thoại" />
+                    <Label fx:id="lblAddress" text="Địa chỉ chi tiết" wrapText="true" />
+                </VBox>
+
+                <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+    <Label text="Phương thức thanh toán" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+    <Separator />
+    
+    <RadioButton text="Thanh toán khi nhận hàng (COD)" toggleGroup="$paymentGroup" selected="true" />
+    
+    <RadioButton text="Ví điện tử Momo (Bảo trì)" toggleGroup="$paymentGroup" disable="true" />
+    <RadioButton text="Thẻ tín dụng / Ghi nợ (Bảo trì)" toggleGroup="$paymentGroup" disable="true" />
+</VBox>
+
+                <VBox spacing="10.0" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 1);">
+                    <Label text="Tóm tắt đơn hàng" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+                    <Separator />
+                    <VBox fx:id="orderItemsList" spacing="5.0" />
+                </VBox>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 0, -5, 0, 0);">
+            
+            <HBox spacing="10.0" alignment="CENTER_LEFT">
+                <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../../../images/voucher.png" />
+                </ImageView>
+                <TextField fx:id="txtVoucher" promptText="Nhập mã giảm giá" HBox.hgrow="ALWAYS"/>
+                <Button text="Áp dụng" onAction="#handleApplyVoucher" style="-fx-background-color: #2c3e50; -fx-text-fill: white; -fx-cursor: hand;"/>
+            </HBox>
+            <Label fx:id="lblDiscount" text="" style="-fx-text-fill: green; -fx-font-weight: bold; -fx-font-size: 12px;"/>
+            
+            <Separator />
+            
+            <HBox alignment="CENTER_LEFT">
+                <Label text="Tổng thanh toán:" style="-fx-font-size: 14px;" />
+                <HBox HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblTotal" text="0 VND" style="-fx-font-weight: bold; -fx-font-size: 18px; -fx-text-fill: #e74c3c;" />
+            </HBox>
+            
+            <Button fx:id="btnPlaceOrder" text="ĐẶT HÀNG" maxWidth="Infinity" onAction="#handlePlaceOrder"
+                    style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16px; -fx-padding: 12; -fx-cursor: hand;" />
+        </VBox>
+    </bottom>
+</BorderPane>

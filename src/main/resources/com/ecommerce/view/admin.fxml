@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="750.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ecommerce.controller.AdminController">
+    
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #2c3e50; -fx-padding: 15; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 0, 5, 0, 0);">
+            <Label text="HỆ THỐNG QUẢN TRỊ (ADMIN)" textFill="WHITE">
+                <font><Font name="Segoe UI Bold" size="22.0" /></font>
+            </Label>
+            <HBox HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleLogout" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="Đăng xuất" />
+        </HBox>
+    </top>
+    
+    <center>
+        <TabPane tabClosingPolicy="UNAVAILABLE" style="-fx-background-color: #ecf0f1;">
+            
+            <Tab text="Quản lý Sản phẩm">
+                <VBox spacing="10.0" style="-fx-padding: 15;">
+                    <HBox spacing="15.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5;">
+                        <VBox spacing="5.0">
+                            <Label text="Tên sản phẩm:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtName" promptText="Nhập tên sản phẩm" prefWidth="200.0"/>
+                            <Label text="Giá tiền:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtPrice" promptText="Nhập giá (số)" />
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Danh mục:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtCategory" promptText="Áo/Quần/Giày" />
+                            <Label text="Giới tính:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtGender" promptText="Nam/Nữ/Trẻ em/Unisex" />
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Số lượng kho:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtQuantity" promptText="Nhập số lượng" />
+                            <Label text="Hình ảnh:" style="-fx-font-weight: bold;"/>
+                            <HBox spacing="5.0">
+                                <TextField fx:id="txtImage" promptText="Tên file ảnh" prefWidth="120.0" />
+                                <Button text="..." onAction="#handleChooseImage" />
+                            </HBox>
+                        </VBox>
+                        <VBox spacing="5.0" alignment="TOP_CENTER" style="-fx-border-color: #bdc3c7; -fx-border-style: dashed; -fx-padding: 5;">
+                            <ImageView fx:id="imgPreview" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                            <Label fx:id="lblImageName" text="Preview" style="-fx-font-size: 10px; -fx-text-fill: gray;" />
+                        </VBox>
+                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                             <Label text="Mô tả:" style="-fx-font-weight: bold;"/>
+                             <TextField fx:id="txtDescription" promptText="Mô tả chi tiết sản phẩm" />
+                             <VBox VBox.vgrow="ALWAYS" />
+                             <HBox spacing="10.0" alignment="BOTTOM_RIGHT">
+                                 <Button onAction="#handleAddProduct" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="THÊM MỚI" />
+                                 <Button onAction="#handleUpdateProduct" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="CẬP NHẬT" />
+                                 <Button onAction="#handleDeleteProduct" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="XÓA" />
+                                 <Button onAction="#handleClearInput" text="Làm mới" style="-fx-cursor: hand;" />
+                             </HBox>
+                        </VBox>
+                    </HBox>
+                    
+                    <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white; -fx-padding: 8; -fx-background-radius: 5;">
+                        <Label text="🔍 TÌM KIẾM:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;" />
+                        <TextField fx:id="txtSearchProduct" promptText="Nhập tên, mã hoặc danh mục..." HBox.hgrow="ALWAYS" style="-fx-background-radius: 15;" />
+                    </HBox>
+                    
+                    <TableView fx:id="tableProduct" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colId" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="colName" prefWidth="250.0" text="Tên Sản Phẩm" />
+                            <TableColumn fx:id="colPrice" prefWidth="120.0" text="Giá Tiền" />
+                            <TableColumn fx:id="colQuantity" prefWidth="80.0" text="Tồn Kho" />
+                            <TableColumn fx:id="colCategory" prefWidth="120.0" text="Danh mục" />
+                            <TableColumn fx:id="colImage" prefWidth="150.0" text="File Ảnh" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Quản lý Đơn hàng">
+                <VBox spacing="10.0" style="-fx-padding: 15;">
+                    <HBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 5;">
+                        <Label text="Tác vụ:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Button onAction="#handleApproveOrder" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="✓ DUYỆT ĐƠN" />
+                        <Button onAction="#handleCancelOrder" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="✕ HỦY ĐƠN" />
+                        <Button onAction="#handleRefreshOrders" text="⟳ Tải lại" style="-fx-cursor: hand;" />
+                        <HBox HBox.hgrow="ALWAYS" alignment="CENTER_RIGHT" spacing="5.0">
+                            <Label text="🔍 Tìm kiếm:" style="-fx-font-weight: bold;" />
+                            <TextField fx:id="txtSearchOrder" promptText="Mã ĐH / User ID / Trạng thái..." prefWidth="250.0" style="-fx-background-radius: 15;" />
+                        </HBox>
+                    </HBox>
+                    <TableView fx:id="tableOrder" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colOrderId" prefWidth="80.0" text="Mã ĐH" />
+                            <TableColumn fx:id="colUserId" prefWidth="80.0" text="User ID" />
+                            <TableColumn fx:id="colTotal" prefWidth="150.0" text="Tổng tiền" />
+                            <TableColumn fx:id="colStatus" prefWidth="150.0" text="Trạng thái" />
+                            <TableColumn fx:id="colDate" prefWidth="180.0" text="Ngày đặt" />
+                            <TableColumn fx:id="colPayment" prefWidth="200.0" text="Thanh toán" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Quản lý Người dùng">
+                <VBox spacing="10.0" style="-fx-padding: 15;">
+                    <HBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 5;">
+                        <Label text="Tác vụ:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Button onAction="#handleLockUser" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="🔒 KHÓA / MỞ KHÓA" />
+                        <Button onAction="#handleDeleteUser" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="✕ XÓA VĨNH VIỄN" />
+                        <Button onAction="#handleRefreshUsers" text="⟳ Tải lại danh sách" style="-fx-cursor: hand;" />
+                    </HBox>
+                    <TableView fx:id="tableUser" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colUserTableId" prefWidth="60.0" text="ID" />
+                            <TableColumn fx:id="colUsername" prefWidth="150.0" text="Tên đăng nhập" />
+                            <TableColumn fx:id="colEmail" prefWidth="220.0" text="Email" />
+                            <TableColumn fx:id="colPhone" prefWidth="120.0" text="Số điện thoại" />
+                            <TableColumn fx:id="colTotalOrders" prefWidth="100.0" text="Đơn đã mua" />
+                            <TableColumn fx:id="colUserStatus" prefWidth="120.0" text="Trạng thái" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Quản lý Đánh giá">
+                <VBox spacing="10.0" style="-fx-padding: 15;">
+                    <HBox spacing="10.0" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 10; -fx-background-radius: 5;">
+                        <Label text="Tác vụ:" style="-fx-font-weight: bold; -fx-text-fill: #34495e;"/>
+                        <Button onAction="#handleDeleteReview" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="✕ XÓA ĐÁNH GIÁ VI PHẠM" />
+                        <Button onAction="#handleRefreshReviews" text="⟳ Tải lại" style="-fx-cursor: hand;" />
+                    </HBox>
+                    <TableView fx:id="tableReview" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colReviewId" prefWidth="50.0" text="ID" />
+                            <TableColumn fx:id="colReviewUser" prefWidth="120.0" text="Người dùng" />
+                            <TableColumn fx:id="colReviewProduct" prefWidth="200.0" text="Sản phẩm" />
+                            <TableColumn fx:id="colReviewRating" prefWidth="60.0" text="Sao" />
+                            <TableColumn fx:id="colReviewComment" prefWidth="350.0" text="Nội dung bình luận" />
+                            <TableColumn fx:id="colReviewDate" prefWidth="150.0" text="Ngày đánh giá" />
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Quản lý Voucher">
+                <VBox spacing="10.0" style="-fx-padding: 15;">
+                    <HBox spacing="15.0" alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 5;">
+                        <VBox spacing="5.0">
+                            <Label text="Mã Voucher:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtVoucherCode" promptText="VD: TET2025" style="-fx-text-transform: uppercase;"/>
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Mức giảm (%):" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtVoucherPercent" promptText="10, 20, 50..." />
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Số lượng:" style="-fx-font-weight: bold;"/>
+                            <TextField fx:id="txtVoucherQty" promptText="Số lần dùng" />
+                        </VBox>
+                        <VBox spacing="5.0">
+                            <Label text="Hết hạn:" style="-fx-font-weight: bold;"/>
+                            <DatePicker fx:id="dpVoucherDate" />
+                        </VBox>
+                        <VBox spacing="5.0" alignment="BOTTOM_LEFT">
+                            <Button onAction="#handleAddVoucher" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="TẠO MÃ" />
+                        </VBox>
+                        <VBox spacing="5.0" alignment="BOTTOM_LEFT">
+                            <Button onAction="#handleDeleteVoucher" style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-cursor: hand;" text="XÓA MÃ CHỌN" />
+                        </VBox>
+                    </HBox>
+                    <TableView fx:id="tableVoucher" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colVoucherCode" text="Mã Code" prefWidth="150.0"/>
+                            <TableColumn fx:id="colVoucherPercent" text="Mức Giảm (%)" prefWidth="100.0" />
+                            <TableColumn fx:id="colVoucherQty" text="Số lượng" prefWidth="100.0" />
+                            <TableColumn fx:id="colVoucherDate" text="Ngày hết hạn" prefWidth="150.0"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            
+            <Tab text="Thống kê Doanh thu">
+                <VBox alignment="CENTER" spacing="20.0" style="-fx-padding: 30; -fx-background-color: white;">
+                    <Label text="BIỂU ĐỒ DOANH THU THEO NGÀY" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+                    <Button text="Cập nhật dữ liệu mới nhất" onAction="#handleLoadChart" style="-fx-cursor: hand; -fx-font-size: 14px; -fx-background-color: #34495e; -fx-text-fill: white;" />
+                    <BarChart fx:id="revenueChart" title="Tổng tiền (VND)" VBox.vgrow="ALWAYS" legendVisible="false">
+                        <xAxis> <CategoryAxis label="Ngày" side="BOTTOM" /> </xAxis>
+                        <yAxis> <NumberAxis label="Doanh thu" side="LEFT" /> </yAxis>
+                    </BarChart>
+                </VBox>
+            </Tab>
+            
+        </TabPane>
+    </center>
+</BorderPane>

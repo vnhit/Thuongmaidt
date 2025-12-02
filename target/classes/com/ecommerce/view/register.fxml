@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.ecommerce.controller.RegisterController"
+            prefWidth="500" prefHeight="600" style="-fx-background-color: #f6f6f6;">
+    
+    <VBox alignment="CENTER" spacing="10.0" layoutX="80" layoutY="30">
+        <ImageView fitWidth="120" fitHeight="120" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="/images/logo.png"/>
+            </image>
+        </ImageView>
+        <Label text="ĐĂNG KÝ TÀI KHOẢN" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+        <TextField fx:id="txtUsername" promptText="Tên đăng nhập" prefWidth="300"/>
+        <PasswordField fx:id="txtPassword" promptText="Mật khẩu" prefWidth="300"/>
+        <TextField fx:id="txtGender" promptText="Giới tính" prefWidth="300"/>
+        <TextField fx:id="txtPhone" promptText="Số điện thoại" prefWidth="300"/>
+        <TextField fx:id="txtEmail" promptText="Email" prefWidth="300"/>
+        <TextField fx:id="txtAddress" promptText="Địa chỉ" prefWidth="300"/>
+        <TextField fx:id="txtCity" promptText="Thành phố" prefWidth="300"/>
+
+        <Button text="Đăng ký" prefWidth="250" onAction="#handleRegister"
+                style="-fx-background-color: #007bff; -fx-text-fill: white;"/>
+        <Button text="Quay lại đăng nhập" prefWidth="250" onAction="#handleBack"
+                style="-fx-background-color: #6c757d; -fx-text-fill: white;"/>
+
+        <Label fx:id="lblMessage" textFill="red"/>
+    </VBox>
+</AnchorPane>
+

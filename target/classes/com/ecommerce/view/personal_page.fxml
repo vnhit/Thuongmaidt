@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" 
+      alignment="TOP_CENTER" style="-fx-background-color: white;" spacing="10.0"
+      fx:controller="com.ecommerce.controller.PersonalController">
+    <padding>
+        <Insets bottom="20.0" top="20.0" />
+    </padding>
+
+    <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="/images/user.png" />
+    </ImageView>
+    
+    <Label fx:id="lblName" style="-fx-font-weight: bold; -fx-font-size: 18px;" />
+    <Label fx:id="lblEmail" style="-fx-font-size: 14px; -fx-text-fill: gray;" />
+
+    <VBox style="-fx-padding: 20 15 10 15;" spacing="15.0">
+        <Label text="CÀI ĐẶT HỒ SƠ" style="-fx-font-weight: bold; -fx-text-fill: gray;">
+            <VBox.margin><Insets bottom="5.0" /></VBox.margin>
+        </Label>
+        
+        <Label fx:id="btnEditProfile" text="Chỉnh sửa hồ sơ" 
+               onMouseClicked="#handleEditProfileClick" 
+               style="-fx-font-size: 16px; -fx-cursor: hand;" />
+        <Separator />
+        
+        <Label fx:id="btnChangePassword" text="Thay đổi mật khẩu" 
+               onMouseClicked="#handleChangePasswordClick" 
+               style="-fx-font-size: 16px; -fx-cursor: hand;" />
+        <Separator />
+        
+        <Label text="Sổ địa chỉ" style="-fx-font-size: 16px; -fx-cursor: hand;" />
+    </VBox>
+    
+    <VBox style="-fx-padding: 10 15 10 15;" spacing="15.0">
+        <Label text="LỊCH SỬ" style="-fx-font-weight: bold; -fx-text-fill: gray;">
+            <VBox.margin><Insets bottom="5.0" /></VBox.margin>
+        </Label>
+        
+        <Label fx:id="btnOrderHistory" text="Lịch sử đơn hàng" 
+               onMouseClicked="#handleOrderHistoryClick"
+               style="-fx-font-size: 16px; -fx-cursor: hand;" />
+        <Separator />
+        
+        <Label fx:id="btnPurchaseHistory" text="Lịch sử mua hàng" 
+               onMouseClicked="#handlePurchaseHistoryClick"
+               style="-fx-font-size: 16px; -fx-cursor: hand;" />
+    </VBox>
+    <VBox alignment="CENTER" style="-fx-padding: 20 15 10 15;">
+        <Label text="ĐĂNG XUẤT" onMouseClicked="#handleLogoutClick" 
+               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: red; -fx-cursor: hand;" />
+    </VBox>
+</VBox>

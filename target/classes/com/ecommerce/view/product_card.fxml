@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.DropShadow?>
+
+<VBox fx:id="productCard" alignment="TOP_CENTER" prefHeight="280.0" prefWidth="170.0" 
+      style="-fx-background-color: white; -fx-background-radius: 8; -fx-border-radius: 8; -fx-border-color: #e0e0e0; -fx-border-width: 1; -fx-cursor: hand;"
+      onMouseEntered="#handleHoverIn" onMouseExited="#handleHoverOut"
+      xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ecommerce.controller.ProductCardController"> 
+
+   <children>
+      <StackPane VBox.vgrow="ALWAYS">
+         <children>
+            <ImageView fx:id="imgProduct" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="/images/logo.png" />
+               </image>
+            </ImageView>
+            
+            <VBox alignment="TOP_RIGHT" StackPane.alignment="TOP_RIGHT">
+               <children>
+                  <StackPane maxHeight="30.0" maxWidth="30.0" style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 50; -fx-effect: dropshadow(one-pass-box, rgba(0,0,0,0.1), 2, 0, 0, 1);">
+                      <children>
+                          <ImageView fx:id="iconHeart" fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                             <image>
+                                <Image url="/images/heart.png" />
+                             </image>
+                          </ImageView>
+                      </children>
+                      <VBox.margin>
+                        <Insets right="8.0" top="8.0" />
+                      </VBox.margin>
+                  </StackPane>
+               </children>
+            </VBox>
+         </children>
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </StackPane>
+      
+      <VBox alignment="CENTER_LEFT" prefHeight="85.0" prefWidth="170.0" spacing="2.0">
+         <padding>
+            <Insets left="12.0" right="12.0" bottom="12.0" />
+         </padding>
+         <children>
+            <Label fx:id="lblName" text="Tên sản phẩm" wrapText="true" maxWidth="Infinity" alignment="TOP_LEFT">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <style>
+                   -fx-text-fill: #333333;
+               </style>
+               <minHeight>40.0</minHeight> </Label>
+            
+            <VBox VBox.vgrow="ALWAYS" /> <HBox alignment="CENTER_LEFT" spacing="5.0">
+               <children>
+                  <Label fx:id="lblPrice" text="0 VND">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                     <style>
+                        -fx-text-fill: #ff5722; /* Màu cam đỏ nổi bật */
+                     </style>
+                  </Label>
+                  
+                  <HBox HBox.hgrow="ALWAYS" />
+                  
+                  <StackPane maxHeight="32.0" maxWidth="32.0" style="-fx-background-color: #f5f5f5; -fx-background-radius: 50; -fx-cursor: hand;">
+                      <children>
+                          <ImageView fx:id="iconCart" fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                             <image>
+                                <Image url="/images/cart.png" />
+                             </image>
+                          </ImageView>
+                      </children>
+                  </StackPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   
+   <effect>
+      <DropShadow color="#00000015" height="10.0" radius="4.5" width="10.0" offsetY="2.0" />
+   </effect>
+</VBox>
