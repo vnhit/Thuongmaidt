@@ -27,6 +27,7 @@ public class Main extends Application {
         primaryStage.setTitle("TechShop - Hệ thống quản lý");
         primaryStage.setScene(new Scene(root));
         
+        
         // Không cho phép thay đổi kích thước cửa sổ login để tránh vỡ giao diện (Optional)
         primaryStage.setResizable(false); 
         
