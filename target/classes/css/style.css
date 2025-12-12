@@ -1,177 +1,176 @@
+
 /* ==================================================================
-   STYLE.CSS - HỖ TRỢ CẢ LIGHT MODE VÀ DARK MODE (Chuyên nghiệp)
-   Sử dụng các biến màu chuẩn của AtlantaFX/JavaFX
+   TAILADMIN THEME FOR JAVAFX
+   Colors: Sidebar (#1C2434), Bg (#F1F5F9), Primary (#3C50E0)
 ================================================================== */
 
-/* --- 1. CẤU HÌNH CHUNG & BIẾN MÀU TÙY CHỈNH --- */
 * {
-    /* Màu thương hiệu (Giữ nguyên màu cam Shopee) */
     -primary-brand-color: #ee4d2d;
-    
-    /* Các biến nền và chữ sẽ tự động thay đổi theo theme của AtlantaFX
-       -color-bg-default: Nền chính (Trắng ở Light, Đen xám ở Dark)
-       -color-bg-subtle:  Nền phụ (Xám nhạt ở Light, Xám đậm hơn ở Dark)
-       -color-fg-default: Màu chữ chính (Đen ở Light, Trắng ở Dark)
-    */
-
-    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-font-family: 'Inter', 'Segoe UI', sans-serif;
+    -text-color: #64748B;       /* Slate 500 */
+    -text-dark: #1C2434;        /* Slate 900 */
+    -primary-color: #3C50E0;    /* TailAdmin Blue */
+    -sidebar-bg: #1C2434;       /* Dark Sidebar */
+    -app-bg: #F1F5F9;           /* Slate 100 Background */
+    -card-bg: #FFFFFF;
+    -border-color: #E2E8F0;
 }
 
-/* Nền tổng thể của ứng dụng */
 .root {
-    -fx-background-color: -color-bg-subtle; /* Dùng màu nền phụ cho dịu mắt */
+    -fx-background-color: -app-bg;
 }
 
-/* --- 2. HEADER (THANH TRÊN CÙNG) --- */
-/* Ở chế độ tối, ta muốn header tối hơn nền một chút để tạo điểm nhấn */
-.header-bar {
-    /* Sử dụng màu nền overlay (lớp phủ) của theme hiện tại */
-    -fx-background-color: -color-bg-overlay; 
-    -fx-padding: 15;
-    /* Đổ bóng nhẹ để tách biệt header */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 2);
+/* ==================================================================
+   TAB MENU NẰM NGANG (STYLE MỚI)
+================================================================== */
+
+/* 1. Thanh chứa Tab (Header) */
+.sidebar-tab-pane .tab-header-area {
+    -fx-background-color: white; /* Nền trắng cho thanh menu */
+    -fx-padding: 0 0 0 20;       /* Cách lề trái một chút */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 0, 5, 0, 0); /* Bóng đổ nhẹ xuống dưới */
 }
-/* Tiêu đề trong header luôn sáng màu để dễ đọc trên nền tối */
-.header-title {
-    -fx-text-fill: -color-fg-default; /* Tự động đổi màu chữ */
+
+/* 2. Từng cái Tab */
+.sidebar-tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-width: 0 0 3 0; /* Viền dưới 3px (để làm hiệu ứng chọn) */
+    -fx-border-color: transparent;
+    -fx-padding: 12 20;        /* Khoảng cách chữ rộng rãi */
+    -fx-cursor: hand;
+    -fx-pref-height: 45px;
+    -fx-pref-width: auto;      /* Tự động co giãn theo chữ */
+}
+
+/* 3. Chữ trong Tab */
+.sidebar-tab-pane .tab .tab-label {
+    -fx-text-fill: #64748B;    /* Màu chữ xám (Slate 500) */
     -fx-font-weight: bold;
-    -fx-font-size: 22px;
+    -fx-font-size: 14px;
+               /* Đảm bảo chữ không bị xoay */
 }
 
-/* --- 3. CÁC THẺ CARD (QUAN TRỌNG NHẤT) --- */
-/* Đây là chỗ hay bị lỗi "trắng bóc" ở nền tối nhất */
+/* 4. Khi di chuột vào (Hover) */
+.sidebar-tab-pane .tab:hover {
+    -fx-background-color: #F1F5F9; /* Xám rất nhạt */
+    -fx-text-fill: #3C50E0;        /* Chữ chuyển xanh */
+}
+
+/* 5. Khi Tab được CHỌN (Active) -> NỀN XANH, CHỮ TRẮNG */
+.sidebar-tab-pane .tab:selected {
+    -fx-background-color: #3C50E0; /* Nền xanh TailAdmin */
+    -fx-border-color: #3C50E0;     /* Viền xanh */
+    -fx-background-radius: 5 5 0 0; /* Bo tròn 2 góc trên */
+}
+
+.sidebar-tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white;          /* Chữ trắng nổi bật */
+}
+
+/* Xóa các background thừa của JavaFX */
+.sidebar-tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+.sidebar-tab-pane .headers-region {
+    -fx-effect: null;
+}
+
+/* --- 2. HEADER BAR --- */
+.header-bar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-padding: 15 30;
+}
+
+/* --- 3. CARDS (KHUNG NỘI DUNG TRẮNG) --- */
+/* Giống cái khung "Transaction Details" trong link bạn gửi */
 .card-container {
-    -fx-padding: 15;
-    -fx-background-radius: 8;
-    /* Dùng màu nền mặc định của theme (Trắng ở Light, Xám tối ở Dark) */
-    -fx-background-color: -color-bg-default; 
-    /* Thêm viền mờ để card nổi bật hơn ở chế độ tối */
-    -fx-border-color: -color-border-subtle;
-    -fx-border-radius: 8;
-    /* Đổ bóng nhẹ */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 5, 0, 0, 1);
-}
-
-/* --- 4. DASHBOARD CARDS (THẺ THỐNG KÊ MÀU SẮC) --- */
-/* Các thẻ này giữ nguyên màu gradient, nhưng cần chỉnh lại chữ và bóng */
-.dash-card {
+    -fx-background-color: white;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
     -fx-padding: 20;
-    -fx-background-radius: 12;
-    /* Bóng tối hơn một chút để nổi trên nền tối */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 4);
+    -fx-border-color: -border-color;
+    -fx-border-radius: 5;
 }
-/* Chữ trong thẻ màu sắc luôn là màu trắng */
-.dash-card .label {
-    -fx-text-fill: white !important;
-}
-/* Định nghĩa lại các màu gradient (giữ nguyên độ tươi) */
-.dash-card-1 { -fx-background-color: linear-gradient(to bottom right, #11998e, #38ef7d); }
-.dash-card-2 { -fx-background-color: linear-gradient(to bottom right, #f2994a, #f2c94c); }
-.dash-card-3 { -fx-background-color: linear-gradient(to bottom right, #5433ff, #20bdff); }
-.dash-card-4 { -fx-background-color: linear-gradient(to bottom right, #ff416c, #ff4b2b); }
 
-
-/* --- 5. BUTTONS (NÚT BẤM) --- */
-/* AtlantaFX đã làm nút rất đẹp, ta chỉ tùy chỉnh nút chính */
+/* --- 4. BUTTONS --- */
 .button {
     -fx-cursor: hand;
+    -fx-background-radius: 4;
     -fx-font-weight: bold;
-}
-
-/* Nút chính màu cam (Sử dụng biến màu thương hiệu) */
-.btn-primary {
-    -fx-background-color: -primary-brand-color;
-    -fx-text-fill: white;
-}
-.btn-primary:hover {
-    /* Làm tối màu cam đi 10% khi di chuột */
-    -fx-background-color: derive(-primary-brand-color, -10%); 
-}
-/* Nút đỏ (Xóa/Hủy) */
-.btn-danger {
-    -fx-background-color: #c0392b;
-    -fx-text-fill: white;
-}
-.btn-danger:hover { -fx-background-color: #e74c3c; }
-
-
-/* --- 6. TAB PANE (THANH TAB ADMIN) - ĐÃ TỐI ƯU DARK MODE --- */
-.tab-pane .tab-header-area .tab-header-background {
-    -fx-background-color: transparent;
-}
-
-/* Tab trạng thái bình thường */
-.tab-pane .tab {
-    /* Dùng màu nền phụ của theme */
-    -fx-background-color: -color-bg-subtle;
-    -fx-background-radius: 5 5 0 0;
-    -fx-border-color: -color-border-subtle; /* Viền màu mờ */
-    -fx-border-width: 1 1 0 1;
     -fx-padding: 8 20;
-    -fx-cursor: hand;
-}
-/* Màu chữ tab bình thường */
-.tab-pane .tab .tab-label {
-    -fx-text-fill: -color-fg-default; /* Tự động đổi màu theo theme */
-    -fx-font-weight: normal;
-    -fx-font-size: 14px;
 }
 
-/* TRẠNG THÁI ĐƯỢC CHỌN (ACTIVE) */
-.tab-pane .tab:selected {
-    /* Dùng màu nhấn của theme (thường là xanh dương) */
-    -fx-background-color: -color-accent-emphasis;
-    -fx-border-color: -color-accent-emphasis;
+.btn-primary {
+    -fx-background-color: -primary-color;
+    -fx-text-fill: white;
 }
-/* Màu chữ tab được chọn (luôn trắng để nổi trên nền xanh) */
-.tab-pane .tab:selected .tab-label {
-    -fx-text-fill: white; 
-    -fx-font-weight: bold;
+.btn-primary:hover { -fx-background-color: #4F61E4; }
+
+.btn-danger {
+    -fx-background-color: #D34053; /* Đỏ nhạt hơn cho hiện đại */
+    -fx-text-fill: white;
+}
+.btn-danger:hover { -fx-background-color: #E2576A; }
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: -text-dark;
+    -fx-border-color: -primary-color;
+    -fx-border-radius: 4;
 }
 
-.tab-pane .tab:hover {
-    /* Sáng lên một chút khi di chuột */
-    -fx-background-color: -color-bg-default;
-}
-.tab-pane .tab:selected:hover {
-     /* Tối đi một chút khi di chuột vào tab đang chọn */
-    -fx-background-color: derive(-color-accent-emphasis, -10%);
+/* --- 5. TEXT FIELD & INPUTS --- */
+.text-field, .combo-box, .date-picker {
+    -fx-background-color: white;
+    -fx-border-color: -border-color;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 8;
+    -fx-prompt-text-fill: #94A3B8;
 }
 
-/* --- 7. TABLE VIEW (BẢNG DỮ LIỆU) --- */
-/* Để AtlantaFX tự xử lý màu nền, chỉ chỉnh header */
+.text-field:focused {
+    -fx-border-color: -primary-color;
+    -fx-effect: dropshadow(three-pass-box, rgba(60, 80, 224, 0.1), 5, 0, 0, 0);
+}
+
+/* --- 6. TABLE VIEW --- */
 .table-view {
-    -fx-background-color: transparent;
-    /* Loại bỏ viền bao quanh bảng để trông phẳng hơn */
-    -fx-border-width: 0; 
+    -fx-background-color: white;
+    -fx-table-cell-border-color: #F1F5F9;
+    -fx-padding: 5;
 }
+
 .table-view .column-header-background {
-    /* Dùng màu nền overlay cho header của bảng */
-    -fx-background-color: -color-bg-overlay;
-    -fx-background-radius: 5 5 0 0;
+    -fx-background-color: #F7F9FC;
+    -fx-background-radius: 4 4 0 0;
 }
+
 .table-view .column-header .label {
-    -fx-text-fill: -color-fg-default;
+    -fx-text-fill: -text-dark;
     -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
 }
-/* Màu nền của các dòng chẵn/lẻ sẽ tự động đẹp nhờ AtlantaFX */
 
+.table-row-cell {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #F1F5F9 transparent; /* Gạch chân mờ */
+}
 
-/* --- 8. SỬA LỖI BIỂU ĐỒ (CHART) BỊ TRẮNG Ở DARK MODE --- */
-.chart {
-    -fx-background-color: transparent !important;
+.table-row-cell:selected {
+    -fx-background-color: #EFF4FB; /* Màu xanh rất nhạt khi chọn */
 }
-.chart-content {
-    -fx-background-color: transparent !important;
+
+/* --- 7. LABEL & TYPOGRAPHY --- */
+.label-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text-dark;
 }
-/* Đổi màu chữ các trục và tiêu đề sang màu của theme */
-.chart-title,
-.axis-label,
-.tick-mark {
-    -fx-text-fill: -color-fg-default !important;
-    -fx-fill: -color-fg-default !important;
-}
-/* Đổi màu các đường kẻ lưới cho mờ đi */
-.chart-vertical-grid-lines, .chart-horizontal-grid-lines {
-    -fx-stroke: -color-border-subtle;
+.label-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: -text-color;
 }

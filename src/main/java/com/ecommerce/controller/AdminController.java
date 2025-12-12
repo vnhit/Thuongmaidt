@@ -151,9 +151,20 @@ public class AdminController implements Initializable {
     // ===== 1. DASHBOARD (SẢNH CHÍNH) =====
     private void updateDashboard() {
         // Đếm số lượng từ các list đã load
-        if (productList != null) lblDashProducts.setText(String.valueOf(productList.size()));
-        if (orderList != null) lblDashOrders.setText(String.valueOf(orderList.size()));
-        if (userList != null) lblDashUsers.setText(String.valueOf(userList.size()));
+        // 1. Sản phẩm
+        if (productList != null && lblDashProducts != null) {
+            lblDashProducts.setText(String.valueOf(productList.size()));
+        }
+        
+        // 2. Đơn hàng
+        if (orderList != null && lblDashOrders != null) {
+            lblDashOrders.setText(String.valueOf(orderList.size()));
+        }
+        
+        // 3. Khách hàng (Đây là chỗ đang bị lỗi của bạn)
+        if (userList != null && lblDashUsers != null) {
+            lblDashUsers.setText(String.valueOf(userList.size()));
+        }
         
         // Tính tổng doanh thu
         long totalRevenue = 0;

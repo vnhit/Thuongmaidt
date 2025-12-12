@@ -94,6 +94,7 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setScene(new Scene(loader.load()));
             stage.setTitle("Hệ thống Quản trị - Admin");
+            stage.setMaximized(true);
             stage.show();
             ((Stage) txtUsername.getScene().getWindow()).close();
         } catch (Exception e) {
