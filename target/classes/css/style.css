@@ -1,106 +1,28 @@
 
 /* ==================================================================
-   TAILADMIN THEME FOR JAVAFX
+   TAILADMIN THEME FOR JAVAFX - PROFESSIONAL ADMIN DASHBOARD
    Colors: Sidebar (#1C2434), Bg (#F1F5F9), Primary (#3C50E0)
 ================================================================== */
 
 * {
     -primary-brand-color: #ee4d2d;
-    -fx-font-family: 'Inter', 'Segoe UI', sans-serif;
+    -fx-font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
     -text-color: #64748B;       /* Slate 500 */
     -text-dark: #1C2434;        /* Slate 900 */
     -primary-color: #3C50E0;    /* TailAdmin Blue */
+    -primary-hover: #4F61E4;    /* Primary Hover */
     -sidebar-bg: #1C2434;       /* Dark Sidebar */
     -app-bg: #F1F5F9;           /* Slate 100 Background */
     -card-bg: #FFFFFF;
     -border-color: #E2E8F0;
+    -success-color: #10B981;    /* Green */
+    -warning-color: #F59E0B;    /* Orange */
+    -danger-color: #EF4444;     /* Red */
+    -info-color: #3B82F6;       /* Blue */
 }
 
 .root {
     -fx-background-color: -app-bg;
-}
-
-/* ==================================================================
-   TAB MENU NẰM NGANG (STYLE MỚI)
-================================================================== */
-
-/* 1. Thanh chứa Tab (Header) */
-.sidebar-tab-pane .tab-header-area {
-    -fx-background-color: white; /* Nền trắng cho thanh menu */
-    -fx-padding: 0 0 0 20;       /* Cách lề trái một chút */
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 0, 5, 0, 0); /* Bóng đổ nhẹ xuống dưới */
-}
-
-/* 2. Từng cái Tab */
-.sidebar-tab-pane .tab {
-    -fx-background-color: transparent;
-    -fx-background-radius: 0;
-    -fx-background-insets: 0;
-    -fx-border-width: 0 0 3 0; /* Viền dưới 3px (để làm hiệu ứng chọn) */
-    -fx-border-color: transparent;
-    -fx-padding: 12 20;        /* Khoảng cách chữ rộng rãi */
-    -fx-cursor: hand;
-    -fx-pref-height: 45px;
-    -fx-pref-width: auto;      /* Tự động co giãn theo chữ */
-}
-
-/* 3. Chữ trong Tab */
-.sidebar-tab-pane .tab .tab-label {
-    -fx-text-fill: #64748B;    /* Màu chữ xám (Slate 500) */
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-               /* Đảm bảo chữ không bị xoay */
-}
-
-/* 4. Khi di chuột vào (Hover) */
-.sidebar-tab-pane .tab:hover {
-    -fx-background-color: #F1F5F9; /* Xám rất nhạt */
-    -fx-text-fill: #3C50E0;        /* Chữ chuyển xanh */
-}
-
-/* 5. Khi Tab được CHỌN (Active) -> NỀN XANH, CHỮ TRẮNG */
-.sidebar-tab-pane .tab:selected {
-    -fx-background-color: #3C50E0; /* Nền xanh TailAdmin */
-    -fx-border-color: #3C50E0;     /* Viền xanh */
-    -fx-background-radius: 5 5 0 0; /* Bo tròn 2 góc trên */
-}
-
-.sidebar-tab-pane .tab:selected .tab-label {
-    -fx-text-fill: white;          /* Chữ trắng nổi bật */
-}
-
-/* Xóa các background thừa của JavaFX */
-.sidebar-tab-pane .tab-header-background {
-    -fx-background-color: transparent;
-}
-.sidebar-tab-pane .headers-region {
-    -fx-effect: null;
-}
-
-/* --- 2. HEADER BAR --- */
-.header-bar {
-    -fx-background-color: white;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
-    -fx-padding: 15 30;
-}
-
-/* --- 3. CARDS (KHUNG NỘI DUNG TRẮNG) --- */
-/* Giống cái khung "Transaction Details" trong link bạn gửi */
-.card-container {
-    -fx-background-color: white;
-    -fx-background-radius: 5;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
-    -fx-padding: 20;
-    -fx-border-color: -border-color;
-    -fx-border-radius: 5;
-}
-
-/* --- 4. BUTTONS --- */
-.button {
-    -fx-cursor: hand;
-    -fx-background-radius: 4;
-    -fx-font-weight: bold;
-    -fx-padding: 8 20;
 }
 
 .btn-primary {
@@ -109,68 +31,495 @@
 }
 .btn-primary:hover { -fx-background-color: #4F61E4; }
 
-.btn-danger {
-    -fx-background-color: #D34053; /* Đỏ nhạt hơn cho hiện đại */
-    -fx-text-fill: white;
-}
-.btn-danger:hover { -fx-background-color: #E2576A; }
 
-.btn-secondary {
+/* ==================================================================
+   TAB MENU NẰM NGANG (STYLE CHUYÊN NGHIỆP)
+================================================================== 
+
+/* 1. Thanh chứa Tab (Header) */
+.tab-pane .tab-header-area {
     -fx-background-color: white;
-    -fx-text-fill: -text-dark;
-    -fx-border-color: -primary-color;
-    -fx-border-radius: 4;
+    -fx-padding: 0 0 0 30;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-background-radius: 0;
 }
 
-/* --- 5. TEXT FIELD & INPUTS --- */
+/* 2. Từng cái Tab */
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: transparent;
+    -fx-padding: 15 25;
+    -fx-cursor: hand;
+    -fx-pref-height: 50px;
+    /* JavaFX không hỗ trợ auto cho pref-width, để mặc định hoặc không set */
+    -fx-transition: all 0.3s ease;
+}
+
+/* 3. Chữ trong Tab */
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #64748B;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-letter-spacing: 0.5px;
+}
+
+/* 4. Khi di chuột vào (Hover) */
+.tab-pane .tab:hover {
+    -fx-background-color: #F8FAFC;
+    -fx-border-color: #CBD5E1;
+}
+
+.tab-pane .tab:hover .tab-label {
+    -fx-text-fill: #3C50E0;
+}
+
+/* 5. Khi Tab được CHỌN (Active) */
+.tab-pane .tab:selected {
+    -fx-background-color: linear-gradient(to bottom, #3C50E0 0%, #2E42C7 100%);
+    -fx-border-color: #3C50E0;
+    -fx-border-width: 0 0 3 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(60, 80, 224, 0.2), 5, 0, 0, 2);
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+}
+
+/* Xóa các background thừa của JavaFX */
+.tab-pane .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.tab-pane .headers-region {
+    -fx-effect: null;
+}
+
+/* --- 2. HEADER BAR (CHUYÊN NGHIỆP) --- */
+.header-bar {
+    -fx-background-color: linear-gradient(to right, #FFFFFF 0%, #F8FAFC 100%);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 12, 0, 0, 4);
+    -fx-padding: 20 35;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #CBD5E1;
+}
+
+.header-bar .label {
+    -fx-text-fill: #3C50E0;
+    -fx-font-weight: 800;
+    -fx-effect: dropshadow(three-pass-box, rgba(60, 80, 224, 0.2), 3, 0, 0, 1);
+}
+
+/* --- 3. CARDS (KHUNG NỘI DUNG CHUYÊN NGHIỆP) --- */
+.card-container {
+    -fx-background-color: white;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 5);
+    -fx-padding: 28;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 12;
+}
+
+.card-container:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(60, 80, 224, 0.18), 18, 0, 0, 8);
+    -fx-translate-y: -2;
+    -fx-border-color: #CBD5E1;
+}
+
+/* Dashboard Stat Cards */
+.stat-card {
+    -fx-background-radius: 16;
+    -fx-border-width: 0;
+    -fx-cursor: hand;
+}
+
+.stat-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 25, 0, 0, 10);
+    -fx-translate-y: -4;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* Stat Card Colors - Revenue */
+.stat-card-revenue {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #4F46E5 0%, #7C3AED 100%);
+}
+
+/* Stat Card Colors - Orders */
+.stat-card-orders {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #EC4899 0%, #EF4444 100%);
+}
+
+/* Stat Card Colors - Products */
+.stat-card-products {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #0EA5E9 0%, #06B6D4 100%);
+}
+
+/* Stat Card Colors - Users */
+.stat-card-users {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #10B981 0%, #14B8A6 100%);
+}
+
+/* --- 4. BUTTONS (CHUYÊN NGHIỆP) --- */
+/* Base button styles - KHÔNG set màu nền để các class cụ thể override */
+.button {
+    -fx-cursor: hand;
+    -fx-background-radius: 8;
+    -fx-font-weight: 600;
+    -fx-padding: 10 24;
+    -fx-font-size: 13px;
+    -fx-letter-spacing: 0.3px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.12), 6, 0, 0, 2);
+    /* KHÔNG set background-color và text-fill ở đây để các class .btn-* có thể override */
+}
+
+.button:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 4);
+    -fx-translate-y: -2;
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.button:pressed {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 4, 0, 0, 1);
+    -fx-translate-y: 0;
+    -fx-scale-x: 0.98;
+    -fx-scale-y: 0.98;
+}
+
+
+/* --- 5. TEXT FIELD & INPUTS (CHUYÊN NGHIỆP) --- */
 .text-field, .combo-box, .date-picker {
     -fx-background-color: white;
-    -fx-border-color: -border-color;
-    -fx-border-radius: 4;
-    -fx-background-radius: 4;
-    -fx-padding: 8;
+    -fx-border-color: #CBD5E1;
+    -fx-border-width: 2;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 11 16;
     -fx-prompt-text-fill: #94A3B8;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #1C2434;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 4, 0, 0, 1);
 }
 
-.text-field:focused {
-    -fx-border-color: -primary-color;
-    -fx-effect: dropshadow(three-pass-box, rgba(60, 80, 224, 0.1), 5, 0, 0, 0);
+.text-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #3C50E0;
+    -fx-border-width: 2.5;
+    -fx-effect: dropshadow(three-pass-box, rgba(60, 80, 224, 0.2), 10, 0, 0, 3);
+    -fx-background-color: #FAFBFC;
 }
 
-/* --- 6. TABLE VIEW --- */
+.combo-box .list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 4);
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 1;
+    -fx-border-radius: 8;
+}
+
+/* --- 6. TABLE VIEW (CHUYÊN NGHIỆP) --- */
 .table-view {
     -fx-background-color: white;
     -fx-table-cell-border-color: #F1F5F9;
-    -fx-padding: 5;
+    -fx-padding: 0;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 8, 0, 0, 2);
 }
 
 .table-view .column-header-background {
-    -fx-background-color: #F7F9FC;
-    -fx-background-radius: 4 4 0 0;
+    -fx-background-color: linear-gradient(to bottom, #F8FAFC 0%, #F1F5F9 100%);
+    -fx-background-radius: 12 12 0 0;
+    -fx-padding: 0;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: #E2E8F0;
+    -fx-border-width: 0 1 0 0;
+    -fx-padding: 12 15;
 }
 
 .table-view .column-header .label {
-    -fx-text-fill: -text-dark;
-    -fx-font-weight: bold;
+    -fx-text-fill: #0F172A;
+    -fx-font-weight: 800;
+    -fx-font-size: 13px;
     -fx-alignment: CENTER-LEFT;
+    -fx-letter-spacing: 0.8px;
 }
 
 .table-row-cell {
     -fx-background-color: white;
-    -fx-border-color: transparent transparent #F1F5F9 transparent; /* Gạch chân mờ */
+    -fx-border-color: transparent transparent #F1F5F9 transparent;
+    -fx-padding: 0;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #FAFBFC;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #F0F4FF;
+    -fx-cursor: hand;
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #EFF4FB; /* Màu xanh rất nhạt khi chọn */
+    -fx-background-color: linear-gradient(to right, #EFF4FB 0%, #E0E7FF 100%);
+    -fx-text-background-color: #2E42C7;
 }
 
-/* --- 7. LABEL & TYPOGRAPHY --- */
-.label-title {
-    -fx-font-size: 18px;
-    -fx-font-weight: bold;
-    -fx-text-fill: -text-dark;
+.table-row-cell:selected .text {
+    -fx-fill: #2E42C7;
+    -fx-font-weight: 700;
 }
+
+/* --- 7. LABEL & TYPOGRAPHY (CHUYÊN NGHIỆP) --- */
+.label-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #0F172A;
+    -fx-letter-spacing: -0.5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 2, 0, 0, 1);
+}
+
 .label-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #475569;
+    -fx-font-weight: 600;
+    -fx-letter-spacing: 0.3px;
+}
+
+.label-stat-value {
+    -fx-font-size: 36px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #FFFFFF;
+    -fx-letter-spacing: -0.5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 1);
+}
+
+.label-stat-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: 700;
+    -fx-letter-spacing: 1.2px;
+    -fx-opacity: 1.0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 3, 0, 0, 1);
+}
+
+/* --- 8. SCROLLBAR (CHUYÊN NGHIỆP) --- */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 12;
+}
+
+.scroll-bar:vertical .track {
+    -fx-background-color: #F1F5F9;
+    -fx-background-radius: 6;
+}
+
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #CBD5E1;
+    -fx-background-radius: 6;
+    -fx-pref-width: 8;
+}
+
+.scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #94A3B8;
+}
+
+/* --- 9. CHART STYLING --- */
+.chart {
+    -fx-background-color: transparent;
+}
+
+.chart-plot-background {
+    -fx-background-color: white;
+}
+
+.chart-title {
+    -fx-text-fill: #1C2434;
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
+}
+
+/* --- 10. IMAGE VIEW --- */
+.image-view {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 5, 0, 0, 2);
+    -fx-background-radius: 8;
+}
+
+/* --- 11. SEPARATOR --- */
+.separator {
+    -fx-background-color: #E2E8F0;
+}
+
+/* --- 12. PROGRESS BAR --- */
+.progress-bar {
+    -fx-background-color: #E2E8F0;
+    -fx-background-radius: 4;
+}
+
+.progress-bar .bar {
+    -fx-background-color: linear-gradient(to right, #3C50E0 0%, #4F61E4 100%);
+    -fx-background-radius: 4;
+}
+
+/* --- 13. TOOLTIP --- */
+.tooltip {
+    -fx-background-color: #1C2434;
+    -fx-text-fill: white;
+    -fx-background-radius: 6;
+    -fx-padding: 8 12;
     -fx-font-size: 12px;
-    -fx-text-fill: -text-color;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8, 0, 0, 2);
+}
+
+/* ==================================================================
+   ADMIN SPECIFIC STYLES (Từ admin.fxml)
+================================================================== */
+
+/* Root Background */
+.admin-root {
+    -fx-background-color: #F1F5F9;
+}
+
+/* Header Title */
+.header-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-letter-spacing: 1px;
+}
+
+
+/* TabPane */
+.admin-tab-pane {
+    -fx-background-color: transparent;
+}
+
+/* Dashboard Section */
+.dashboard-container {
+    -fx-padding: 35;
+}
+
+.dashboard-title {
+    -fx-font-size: 28px;
+}
+
+.dashboard-chart-title {
+    -fx-font-size: 20px;
+}
+
+/* Stat Cards */
+.stat-card-revenue {
+    -fx-background-color: #6366F1;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(99, 102, 241, 0.5), 20, 0, 0, 8);
+    -fx-padding: 28 32;
+}
+
+.stat-card-orders {
+    -fx-background-color: #EC4899;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(236, 72, 153, 0.5), 20, 0, 0, 8);
+    -fx-padding: 28 32;
+}
+
+.stat-card-products {
+    -fx-background-color: #0EA5E9;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(14, 165, 233, 0.5), 20, 0, 0, 8);
+    -fx-padding: 28 32;
+}
+
+.stat-card-users {
+    -fx-background-color: #10B981;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(three-pass-box, rgba(16, 185, 129, 0.5), 20, 0, 0, 8);
+    -fx-padding: 28 32;
+}
+
+/* Stat Card Labels */
+.stat-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 1);
+}
+
+.stat-value {
+    -fx-font-size: 38px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #FFFFFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 2);
+}
+
+/* Chart */
+.chart-transparent {
+    -fx-background-color: transparent;
+}
+
+/* Section Containers */
+.section-container {
+    -fx-padding: 25;
+}
+
+.section-container-large {
+    -fx-padding: 30;
+}
+
+/* Section Titles */
+.section-title {
+    -fx-font-size: 24px;
+}
+
+.section-title-medium {
+    -fx-font-size: 18px;
+}
+
+/* Form Labels */
+.form-label-bold {
+    -fx-font-weight: 600;
+}
+
+/* Image Preview */
+.image-preview-label {
+    -fx-font-size: 10px;
+    -fx-text-fill: #94A3B8;
+}
+
+.image-preview-view {
+    -fx-background-radius: 8;
+}
+
+/* Search Labels */
+.search-label {
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-text-fill: #1C2434;
+}
+
+.search-label-small {
+    -fx-font-weight: 600;
+    -fx-font-size: 13px;
+}
+
+/* Search Field */
+.search-field {
+    -fx-pref-width: 400;
+}
+
+.search-field-medium {
+    -fx-pref-width: 300;
+}
+
+
+/* Date Picker */
+.date-picker-wide {
+    -fx-pref-width: 300;
 }

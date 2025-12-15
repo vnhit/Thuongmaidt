@@ -175,7 +175,7 @@ public class AdminController implements Initializable {
                 }
             }
         }
-        lblDashRevenue.setText(FormatterUtils.formatPrice((int)totalRevenue) + " VND");
+        lblDashRevenue.setText(FormatterUtils.formatPrice((int)totalRevenue) );
     }
     
     // ===== 2. DARK MODE & PROFILE =====
